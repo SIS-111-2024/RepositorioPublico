@@ -1,0 +1,38 @@
+import customtkinter as ctk
+import PIL
+from PIL import Image,ImageTk
+def PantallaInicio():
+    paginaInicio.pack()
+    paginaRegistro.pack_forget()
+    paginaLogin.pack_forget()
+def PantallaRegistro():
+    paginaRegistro.pack()
+    paginaInicio.pack_forget()
+    paginaLogin.pack_forget()
+def PantallaLogin():
+    paginaLogin.pack()
+    paginaRegistro.pack_forget()
+    paginaIniciao.pack_forget()
+ventana=ctk.CTk()
+ventana.geometry("500x500")
+ctk.set_appearance_mode("dark")
+paginaInicio=ctk.CTkFrame(ventana,width=500,height=500,fg_color="transparent")
+paginaRegistro=ctk.CTkFrame(ventana,width=500,height=500,fg_color="transparent")
+paginaLogin=ctk.CTkFrame(ventana,width=500,height=500,fg_color="transparent")
+paginaLogin.pack()
+imagen=ctk.CTkImage(dark_image=Image.open('logo.png'),size=(100,100))
+imagenLogo=ctk.CTkLabel(paginaLogin,text='',image=imagen)
+imagenLogo.pack()
+usuario=ctk.CTkEntry(paginaLogin,placeholder_text="Ingrese datos de Usuario",width=300,corner_radius=10)
+usuario.pack(pady=10,padx=10)
+password=ctk.CTkEntry(paginaLogin,placeholder_text="Ingrese datos de su Password",width=300,corner_radius=10)
+password.pack(pady=10,padx=10)
+botonLogin=ctk.CTkButton(paginaLogin,text="Iniciar Sesion",width=300,height=50,corner_radius=10,command=PantallaInicio)
+botonLogin.pack(padx=10,pady=10)
+botonRegistro=ctk.CTkButton(paginaLogin,text="Registrarse",width=300,height=50,corner_radius=10,command=PantallaRegistro)
+botonRegistro.pack(padx=10,pady=10)
+tituloRegistro=ctk.CTkLabel(paginaRegistro,text="Pagina de Registro")
+tituloRegistro.pack()
+botonLogin=ctk.CTkButton(paginaRegistro,text="Volver a Iniciar Sesion",width=300,height=50,corner_radius=10,command=PantallaLogin)
+botonLogin.pack(padx=10,pady=10)
+ventana.mainloop()
